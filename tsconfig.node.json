@@ -1,0 +1,36 @@
+// {
+//   "extends": "@tsconfig/node18/tsconfig.json",
+//   "include": [
+//     "vite.config.*",
+//     "vitest.config.*",
+//     "cypress.config.*",
+//     "nightwatch.conf.*",
+//     "playwright.config.*"
+//   ],
+//   "compilerOptions": {
+//     "composite": true,
+//     "module": "ESNext",
+//     "moduleResolution": "Bundler",
+//     "types": ["node"]
+//   }
+// }
+
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "~/*": [
+        "/public/*",
+      ],
+      "@/*": [
+        "/src/*"
+      ]
+    },
+  },
+  "include": [
+    "vite.config.ts"
+  ]
+}
