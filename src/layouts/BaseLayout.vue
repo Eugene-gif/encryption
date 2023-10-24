@@ -1,13 +1,16 @@
 <script lang="ts" setup>
-  import { ref } from "vue";
-  // import DrawerMenu from "@/components/Drawers/DrawerMenu.vue";
-  // import Header from "@/components/Header/Header.vue";
+  import Header from "@/components/Header.vue";
+  import Drawer from "@/components/Drawer.vue";
 </script>
 
 <template>
-  <div class="wrapper">
-    <router-view />
-  </div>
+  <q-layout view="lHh Lpr lff">
+    <Header />
+    <Drawer />
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+  </q-layout>
 </template>
 
 <style lang="scss" scoped>

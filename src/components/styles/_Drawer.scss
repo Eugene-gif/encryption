@@ -1,0 +1,64 @@
+:deep() {
+  .q-drawer__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .drawer {
+    border-right: 1px solid var(--grey-5);
+
+    .logo {
+      display: flex;
+      gap: 10px;
+      margin: 10px 10px 32px 10px;
+      line-height: 0;
+
+      svg {
+        width: 44px;
+        height: 44px;
+      }
+
+      &__title {
+        font-size: 22px;
+        line-height: 28px;
+        letter-spacing: 0.35px;
+        font-weight: 700;
+      }
+
+      &__subtitle {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 500;
+        color: var(--grey-3);
+      }
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 8px;
+      height: 48px;
+      border-radius: 4px;
+      transition: all 0.2s;
+      background-color: var(--grey-6);
+
+      &__icon {
+        width: 25px;
+        height: 25px;
+        line-height: 0;
+      }
+
+      &__text {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 18px;
+      }
+
+      &.--toggler {
+        background-color: transparent;
+        margin-top: auto;
+      }
+    }
+  }
+}

@@ -1,10 +1,12 @@
 :root {
-  --blue: #194bfb;
-  --red: #ff4747;
-  --outline: #EDF2F7;
-  --border-grey: #E2E8F0;
-  --grey1:#A0AEC0;
-  --grey2: #718096;
+  --blue: #007AFF;
+  --red: #FF3B30;
+  --grey: #8E8E93;
+  --grey-2: #AEAEB2;
+  --grey-3: #C7C7CC;
+  --grey-4: #D1D1D6;
+  --grey-5: #E5E5EA;
+  --grey-6: #F2F2F7;
   --green: #00E675;
   --dark: #1A202C;
   --black: #09121F;
@@ -22,7 +24,8 @@ a {
   color: inherit;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
