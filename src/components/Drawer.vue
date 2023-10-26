@@ -15,7 +15,7 @@
     :mini="miniState"
     :width="300"
     :mini-width="64"
-    :breakpoint="920"
+    :breakpoint="860"
     side="left"
     class="drawer"
   >
@@ -47,10 +47,10 @@
       </q-item-section>
     </q-item>
 
-    <q-item
+    <!-- <q-item
       class="item"
       clickable
-      @click="$router.push('/about')"
+      @click="$router.push('/new-user')"
     >
       <div
         class="item__icon"
@@ -62,7 +62,7 @@
       <q-item-section>
         <div class="item__text">About</div>
       </q-item-section>
-    </q-item>
+    </q-item> -->
 
     <q-item
       @click="miniState = !miniState"

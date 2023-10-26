@@ -1,19 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
-const Home = () => import("@/modules/Home.vue");
-const About = () => import("@/modules/About.vue");
+const Users = () => import("@/modules/Users.vue");
+const NewUser = () => import("@/modules/NewUser.vue");
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home,
+      name: "users",
+      component: Users,
     },
     {
-      path: "/about",
-      name: "about",
-      component: About,
+      path: "/new-user",
+      name: "new-user",
+      component: NewUser,
     },
   ],
 });

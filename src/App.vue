@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { RouterLink, RouterView } from "vue-router";
   import BaseLayout from "@/layouts/BaseLayout.vue";
 </script>
 
@@ -7,4 +6,6 @@
   <BaseLayout />
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+  @import "@/styles/main.scss";
+</style>

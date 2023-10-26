@@ -1,21 +1,33 @@
 <script lang="ts" setup>
-  // import { ref } from "vue";
-  import IconUser from "@/assets/icons/IconUser.vue";
+  import { ref } from "vue";
   import IconExit from "@/assets/icons/IconExit.vue";
+  import IconSearch from "@/assets/icons/IconSearch.vue";
+
+  const searchText = ref<string>("");
 </script>
 
 <template>
   <q-header class="bg-white text-black header">
-    <div class="header__search search">Поиск по пользователям</div>
+    <q-toolbar-title>
+      <q-input
+        v-model="searchText"
+        placeholder="Поиск по пользователям"
+        debounce="300"
+        borderless
+        class="search"
+      >
+        <template #prepend>
+          <IconSearch />
+        </template>
+      </q-input>
+    </q-toolbar-title>
 
-    <!-- <q-btn class="header__btn btn">
-      <IconUser class="btn__icon" />
-    </q-btn> -->
     <q-btn-dropdown
       dropdown-icon="person"
       color="grey-6"
       text-color="grey-2"
       no-icon-animation
+      unelevated
       style="border-radius: 50%; width: 35px; height: 35px"
     >
       <q-list>

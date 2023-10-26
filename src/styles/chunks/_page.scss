@@ -1,0 +1,14 @@
+.page {
+  .top {
+    &__crumbs {
+      margin-bottom: 14px;
+    }
+
+    &__title {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      line-height: 41px;
+    }
+  }
+}
