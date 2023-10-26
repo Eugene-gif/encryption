@@ -1,0 +1,59 @@
+.input:deep() {
+  margin-bottom: 16px;
+  line-height: 1;
+
+  .input {
+    &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 21px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .q-field {
+    border-radius: 4px;
+
+    input {
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 0 6px 0;
+    }
+
+    &.valid {
+      background-color: var(--grey-6);
+    }
+
+    &--outlined .q-field__control::before {
+      border-radius: 4px;
+    }
+
+    &--outlined .q-field__control::after {
+      border-radius: 4px;
+    }
+
+    &__control {
+      height: 32px;
+      color: var(--blue);
+    }
+
+    &__marginal {
+      height: 32px;
+      font-size: 25px;
+      padding-right: 8px;
+    }
+
+    &__bottom {
+      padding: 5px 0 0 0;
+    }
+
+    &--with-bottom {
+      padding: 0;
+    }
+  }
+}
