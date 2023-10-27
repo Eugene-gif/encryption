@@ -56,14 +56,14 @@
         <div class="content__box">
           <Input
             v-model="user.name"
-            title="Имя пользователя"
+            label="Имя пользователя"
             placeholder="Имя"
             width="314px"
           />
 
           <Input
             v-model="user.name"
-            title="Пароль"
+            label="Пароль"
             placeholder="Фамилия"
             width="314px"
           />

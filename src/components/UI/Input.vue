@@ -5,7 +5,7 @@
   interface Props {
     modelValue?: string | number | null;
     value?: string;
-    title?: string;
+    label?: string;
     placeholder?: string;
     isPassword?: boolean;
     disabled?: boolean;
@@ -32,10 +32,10 @@
   <div class="input">
     <div class="input__header">
       <div
-        v-if="title"
-        class="input__title"
+        v-if="label"
+        class="input__label"
       >
-        {{ title || "" }}
+        {{ label || "" }}
       </div>
     </div>
     <q-input

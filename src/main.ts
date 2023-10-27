@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import "./style.css";
 // router
-import router from "./router";
+import router from "@/router/router";
 // pinia
 import { createPinia } from "pinia";
 // quasar
