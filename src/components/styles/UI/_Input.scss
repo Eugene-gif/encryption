@@ -8,7 +8,7 @@
       justify-content: space-between;
     }
 
-    &__title {
+    &__label {
       font-weight: 400;
       font-size: 16px;
       line-height: 21px;
@@ -54,6 +54,27 @@
 
     &--with-bottom {
       padding: 0;
+    }
+  }
+}
+
+.input.h-44 {
+  :deep() {
+    .q-field {
+      border-radius: 10px;
+
+      &--outlined .q-field__control::before {
+        border-radius: 10px;
+      }
+
+      &--outlined .q-field__control::after {
+        border-radius: 10px;
+      }
+
+      &__control,
+      .q-field__marginal {
+        height: 44px;
+      }
     }
   }
 }

@@ -5,6 +5,8 @@
     iconLeft?: string;
     iconRight?: string;
     width?: string;
+    height?: string;
+    radius?: string;
   }
 
   const props = defineProps<Props>();
@@ -15,7 +17,11 @@
     :outline="outline"
     unelevated
     no-caps
-    :style="`width: ${width};`"
+    :style="`
+      width: ${width}; 
+      height: ${height}; 
+      border-radius: ${radius};
+    `"
   >
     <q-icon
       v-if="iconLeft"
