@@ -11,13 +11,12 @@ const BaseLayout = () => import("@/layouts/BaseLayout.vue");
 const AuthLayout = () => import("@/layouts/AuthLayout.vue");
 
 // Основные роуты
-const Users = () => import("@/modules/Users.vue");
+const Users = () => import("@/modules/Users/Users.vue");
 const NewUser = () => import("@/modules/NewUser.vue");
-// const SectionExamples = () => import("@/modules/SectionExamples.vue");
-// const UserDetail = () => import("@/modules/Users/UserDetail.vue");
+const NotFound = () => import("@/components/NotFound.vue");
 
 // Авторизация
-const Authorization = () => import("@/modules/Auth.vue");
+const Authorization = () => import("@/modules/Auth/Auth.vue");
 // const Registration = () =>
 // import("@/modules/AuthForms/Registration.vue");
 
@@ -35,12 +34,14 @@ const routes: RouteRecordRaw[] = [
         path: "/users",
         name: "Users",
         component: Users,
+        // children: [
+        //   {
+        //     path: "/new-user",
+        //     name: "NewUser",
+        //     component: NewUser,
+        //   },
+        // ],
       },
-      // {
-      //   path: "example",
-      //   name: "example-page",
-      //   component: SectionExamples,
-      // },
       {
         path: "/new-user",
         name: "NewUser",
@@ -66,11 +67,11 @@ const routes: RouteRecordRaw[] = [
       // },
     ],
   },
-  // {
-  //   path: "/:pathMath(.*)*",
-  //   name: "not-found",
-  //   component: NotFound,
-  // },
+  {
+    path: "/:pathMath(.*)*",
+    name: "not-found",
+    component: NotFound,
+  },
 ];
 
 const router = createRouter({

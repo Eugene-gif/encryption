@@ -53,8 +53,8 @@
 
 <template>
   <div class="auth">
-    <h1 class="auth__heading">CryptFilePro</h1>
-    <h3 class="auth__title">Войти</h3>
+    <h1 class="auth__heading title">CryptFilePro</h1>
+    <h3 class="auth__title title">Войти</h3>
     <q-form @submit.prevent="clickLogin">
       <Input
         class="q-mb-lg h-44"
@@ -68,7 +68,6 @@
         isPassword
         label="Пароль*"
       />
-      <!-- :rules="[(val) => val.length || 'Поле должно быть заполнено']" -->
 
       <div class="row justify-between q-mt-lg">
         <Button
@@ -93,15 +92,10 @@
     background-color: #fff;
 
     &__title {
-      font-size: 34px;
-      font-weight: 700;
-      line-height: 41px;
-      letter-spacing: 0.374px;
       margin-bottom: 20px;
     }
 
     &__heading {
-      @extend .auth__title;
       font-weight: 800;
       position: absolute;
       top: -60px;

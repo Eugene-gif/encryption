@@ -2,16 +2,9 @@ import { QTableProps } from "quasar";
 
 export interface User {
   id: string;
-  email?: string;
-  account: {
-    email: string;
-    id: string;
-    isBlocked: boolean;
-  };
-  biography: string;
   firstname: string;
-  middlename: string;
   lastname: string;
+  isBlocked: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -19,10 +12,9 @@ export interface User {
 //  Модель редактируемого пользователя
 export interface EditUser {
   firstname: string;
-  middlename: string;
   lastname: string;
-  biography: string;
-  organization: string;
+  isBlocked: boolean;
+  pin: string;
 }
 
 //  Модель нового пользователя
@@ -38,30 +30,20 @@ export interface NewUser {
 
 export const userColumns: QTableProps["columns"] = [
   {
-    name: "email",
+    name: "name",
     required: true,
-    label: "Email",
+    label: "Имя и Фамилия",
     align: "left",
-    field: (row) => row.account.email,
+    field: (row) => `${row.lastname} ${row.firstname}`,
     format: (val) => `${val}`,
     sortable: true,
   },
   {
-    name: "firstname",
+    name: "createdAt",
     required: true,
-    label: "ФИО",
+    label: "Дата регистрации",
     align: "left",
-    field: (row) =>
-      `${row.lastname} ${row.firstname} ${row.middlename}`,
-    format: (val) => `${val}`,
-    sortable: true,
-  },
-  {
-    name: "roles",
-    required: true,
-    label: "Роль/Роли",
-    align: "left",
-    field: (row) => row.account.roles,
+    field: (row) => row.createdAt,
     format: (val) => `${val}`,
     sortable: true,
   },
@@ -70,9 +52,17 @@ export const userColumns: QTableProps["columns"] = [
     required: true,
     label: "Заблокирован",
     align: "left",
-    field: (row) => row.account.isBlocked,
+    field: (row) => row.isBlocked,
     format: (val) => `${val ? "Заблокирован" : "Нет"}`,
     sortable: true,
+  },
+  {
+    name: "actions",
+    required: true,
+    label: "Действия",
+    align: "center",
+    field: (row) => row.roles,
+    format: (val) => `${val}`,
   },
 ];
 

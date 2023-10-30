@@ -7,13 +7,14 @@
   interface User {
     name: string;
     lastName: string;
+    isBlocked: false;
   }
 
   // BreadCrumbs
   const crumbList = [
     {
       title: "Пользователи",
-      path: "/",
+      path: "/users",
     },
     {
       title: "Создание нового пользователя",
@@ -25,6 +26,7 @@
   const user = ref<User>({
     name: "",
     lastName: "",
+    isBlocked: false,
   });
 </script>
 
@@ -38,7 +40,7 @@
       <div class="row justify-between items-center">
         <h2 class="top__title">Создание нового пользователя</h2>
         <Button
-          @click="$router.push('/')"
+          @click="$router.push('/users')"
           label="Назад к списку пользователей"
         />
       </div>

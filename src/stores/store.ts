@@ -37,7 +37,7 @@ export const useStore = defineStore("main", {
       this.profile = null;
       this.token = null;
       this.isAuthenticated = false;
-      router.push("/auth/login");
+      router.push("/auth");
     },
     async getProfile(): Promise<void> {
       const userService = new UserRest();
