@@ -1,8 +1,10 @@
 <script lang="ts" setup>
   import { ref } from "vue";
+  import { useStore } from "@/stores/store";
   import IconExit from "@/assets/icons/IconExit.vue";
   import IconSearch from "@/assets/icons/IconSearch.vue";
 
+  const userStore = useStore();
   const searchText = ref<string>("");
 </script>
 
@@ -35,6 +37,7 @@
           class="item"
           clickable
           v-close-popup
+          @click="userStore.logout()"
         >
           <IconExit avatar />
           <q-item-section>

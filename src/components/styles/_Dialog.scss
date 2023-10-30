@@ -1,0 +1,80 @@
+.dialog {
+  &__wrapper {
+    background-color: #fff;
+    max-width: 350px;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+
+    &__close.q-btn {
+      background-color: transparent;
+      border-radius: 8px;
+      font-weight: 800;
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &__wrapper {
+      padding: 0 32px;
+    }
+
+    &__icon {
+      margin: 0 auto 16px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border: 1px solid var(--grey-5);
+      border-radius: 6px;
+
+      .trash {
+        width: 24px;
+        height: 24px;
+      }
+
+      .close {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    &__title {
+      text-align: center;
+      font-size: 22px;
+      line-height: 28px;
+      font-weight: 700;
+      letter-spacing: 0.35px;
+      margin-bottom: 8px;
+    }
+
+    &__text {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 18px;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 32px 32px 32px;
+  }
+}

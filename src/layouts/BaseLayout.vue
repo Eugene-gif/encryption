@@ -11,7 +11,6 @@
       <router-view />
     </q-page-container>
   </q-layout>
-  <!-- <router-view /> -->
 </template>
 
 <style lang="scss" scoped>
