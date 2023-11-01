@@ -10,5 +10,11 @@
       letter-spacing: 0.4px;
       line-height: 41px;
     }
+
+    &__btns {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
   }
 }

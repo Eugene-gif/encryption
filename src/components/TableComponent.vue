@@ -2,6 +2,7 @@
   import { nextTick, ref, watch } from "vue";
   import { QTableProps } from "quasar";
   import { Pagination } from "@/models/ResponseModel";
+  import Button from "@/components/UI/Button.vue";
   import IconEdit from "@/assets/icons/IconEdit.vue";
   import IconClose from "@/assets/icons/IconClose.vue";
   import IconTrash from "@/assets/icons/IconTrash.vue";
@@ -16,13 +17,14 @@
   const props = defineProps<Props>();
   // Emits
   const emit = defineEmits([
-    "changePage",
-    "openDetail",
     "openDelete",
     "openBan",
-    "onRefresh",
-    "onFilter",
-    "onSorting",
+    "openBanDevice",
+    "openUnlockDevice",
+    // "changePage",
+    // "onRefresh",
+    // "onFilter",
+    // "onSorting",
   ]);
 
   // Объект пагинации
@@ -92,29 +94,40 @@
               class="item"
               clickable
               v-close-popup
-              @click="$emit('openDetail', props.row.id)"
+              @click="
+                $router.push({
+                  path: `/users/${props.row.id}`,
+                  state: {
+                    id: props.row.id,
+                    firstname: props.row.firstname,
+                    lastname: props.row.lastname,
+                  },
+                })
+              "
             >
               <IconEdit avatar />
               <q-item-section>
                 <q-item-label>Редактировать</q-item-label>
               </q-item-section>
             </q-item>
+
             <q-item
               class="item"
               clickable
               v-close-popup
-              @click="$emit('openBan', props.row.id)"
+              @click="$emit('openBan', props.row)"
             >
               <IconClose avatar />
               <q-item-section>
                 <q-item-label>Заблокировать</q-item-label>
               </q-item-section>
             </q-item>
+
             <q-item
               class="item"
               clickable
               v-close-popup
-              @click="$emit('openDelete', props.row.id)"
+              @click="$emit('openDelete', props.row)"
             >
               <IconTrash avatar />
               <q-item-section>
@@ -123,6 +136,55 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
+      </q-td>
+    </template>
+    <!-- Таблица данных резервных копий -->
+    <template #body-cell-generatedAt="props">
+      <q-td :props="props">
+        <span>
+          {{ props.row.date }}
+        </span>
+      </q-td>
+    </template>
+
+    <!-- Таблица данных устройств текущего пользователя -->
+    <template #body-cell-device="props">
+      <q-td :props="props">
+        <span>
+          {{ props.row.deviceName }}
+        </span>
+      </q-td>
+    </template>
+
+    <template #body-cell-lastLoginDate="props">
+      <q-td :props="props">
+        <span>
+          {{ props.row.lastLoginDate }}
+        </span>
+      </q-td>
+    </template>
+
+    <template #body-cell-deviceActions="props">
+      <q-td :props="props">
+        <template v-if="props.row.isBlocked">
+          <span class="blocked blocked--true q-mr-sm">
+            Заблокирован
+          </span>
+          <Button
+            label="Разблокировать"
+            height="31px"
+            outline
+            @click="$emit('openUnlockDevice', props.row)"
+          />
+        </template>
+
+        <Button
+          v-else
+          label="Заблокировать"
+          height="31px"
+          outline
+          @click="$emit('openBanDevice', props.row)"
+        />
       </q-td>
     </template>
 

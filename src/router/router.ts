@@ -11,14 +11,13 @@ const BaseLayout = () => import("@/layouts/BaseLayout.vue");
 const AuthLayout = () => import("@/layouts/AuthLayout.vue");
 
 // Основные роуты
-const Users = () => import("@/modules/Users/Users.vue");
-const NewUser = () => import("@/modules/NewUser.vue");
 const NotFound = () => import("@/components/NotFound.vue");
+const Users = () => import("@/modules/Users/Users.vue");
+const NewUser = () => import("@/modules/Users/NewUser.vue");
+const User = () => import("@/modules/Users/User.vue");
 
 // Авторизация
 const Authorization = () => import("@/modules/Auth/Auth.vue");
-// const Registration = () =>
-// import("@/modules/AuthForms/Registration.vue");
 
 const routes: RouteRecordRaw[] = [
   {
@@ -34,18 +33,16 @@ const routes: RouteRecordRaw[] = [
         path: "/users",
         name: "Users",
         component: Users,
-        // children: [
-        //   {
-        //     path: "/new-user",
-        //     name: "NewUser",
-        //     component: NewUser,
-        //   },
-        // ],
       },
       {
-        path: "/new-user",
+        path: "/users/new-user",
         name: "NewUser",
         component: NewUser,
+      },
+      {
+        path: "/users/:id",
+        name: "User",
+        component: User,
       },
     ],
   },
@@ -60,11 +57,6 @@ const routes: RouteRecordRaw[] = [
         name: "Authorization",
         component: Authorization,
       },
-      // {
-      //   path: "register",
-      //   name: "auth-register",
-      //   component: Registration,
-      // },
     ],
   },
   {

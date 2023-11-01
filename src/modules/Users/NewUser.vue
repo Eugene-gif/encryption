@@ -1,14 +1,9 @@
 <script lang="ts" setup>
   import { ref } from "vue";
+  import { NewUser } from "@/models/UserModel";
   import BreadCrumbs from "@/components/BreadCrumbs.vue";
   import Button from "@/components/UI/Button.vue";
   import Input from "@/components/UI/Input.vue";
-
-  interface User {
-    name: string;
-    lastName: string;
-    isBlocked: false;
-  }
 
   // BreadCrumbs
   const crumbList = [
@@ -18,15 +13,14 @@
     },
     {
       title: "Создание нового пользователя",
-      path: "/new-user",
+      path: "/users/new-user",
     },
   ];
 
   // Имя и фамилия нового пользователя
-  const user = ref<User>({
-    name: "",
-    lastName: "",
-    isBlocked: false,
+  const user = ref<NewUser>({
+    firstname: "",
+    lastname: "",
   });
 </script>
 
@@ -57,15 +51,15 @@
       <q-form>
         <div class="content__box">
           <Input
-            v-model="user.name"
+            v-model="user.firstname"
             label="Имя пользователя"
             placeholder="Имя"
             width="314px"
           />
 
           <Input
-            v-model="user.name"
-            label="Пароль"
+            v-model="user.lastname"
+            label="Фамилия"
             placeholder="Фамилия"
             width="314px"
           />
@@ -73,6 +67,7 @@
         <Button
           label="Сохранить изменения"
           width="314px"
+          :disable="user.firstname && user.lastname ? false : true"
         />
       </q-form>
     </div>
