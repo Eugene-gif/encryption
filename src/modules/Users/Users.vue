@@ -1,40 +1,67 @@
 <script lang="ts" setup>
   import { ref } from "vue";
+  import { useRouter, useRoute } from "vue-router";
   import { Pagination } from "@/models/ResponseModel";
-  import { userColumns } from "@/models/UserModel";
+  import { userColumns, User } from "@/models/UserModel";
   import { usersList } from "@/data/usersList";
   import TableComponent from "@/components/TableComponent.vue";
   import Dialog from "@/components/Dialog.vue";
   import BreadCrumbs from "@/components/BreadCrumbs.vue";
   import Button from "@/components/UI/Button.vue";
 
+  // Роутер
+  const router = useRouter();
+
   // Заголовок текущего роута
   const heading: string = "Пользователи";
-
   // BreadCrumbs
   const crumbList = [
     {
       title: heading,
-      path: "/",
+      path: "/users",
     },
   ];
 
-  // const emits = defineEmits(['onDeleteUser'])
-
   // Флаг загрузки
   const loading = ref(true);
-  // Флаг отображения модального окна удаления
+  // Флаг отображения модального окна удаления пользователя
   const isDialogDelete = ref<boolean>(false);
-  // Флаг отображения модального окна успеха операции
-  // const isDialogSuccess = ref<boolean>(false);
   // Флаг отображения модального окна блокировки пользователя
   const isDialogBan = ref<boolean>(false);
+  // Уведомление об успешном удалении
+  const isDialogDeleteSuccess = ref<boolean>(false);
+  // Уведомление об успешной блокировке
+  const isDialogBanSuccess = ref<boolean>(false);
+  // Текущий пользователь
+  const currentUser = ref<User | null>(null);
   // Пагинация
   const pagination = ref<Pagination | null>(null);
 
-  // function openDialogSuccess (): void {
-  //   isDialogSuccess.value = !isDialogSuccess.value;
-  // }
+  // Функция переключения модального окна удаления пользователя
+  const toggleDialogDelete = (user: User): void => {
+    if (user) currentUser.value = user;
+    isDialogDelete.value = !isDialogDelete.value;
+    console.log(user);
+  };
+  // Удаление пользователя
+  const deleteUser = (user: User): void => {
+    console.log(user.firstname + " " + user.lastname, "delete");
+    isDialogDelete.value = false;
+    isDialogDeleteSuccess.value = !isDialogDeleteSuccess.value;
+  };
+
+  // Функция переключения модального окна бана пользователя
+  const toggleDialogBan = (user: User): void => {
+    if (user) currentUser.value = user;
+    isDialogBan.value = !isDialogBan.value;
+    console.log(user);
+  };
+  // Бан пользователя
+  const banUser = (user: User): void => {
+    console.log(user.firstname + " " + user.lastname, "ban");
+    isDialogBan.value = false;
+    isDialogBanSuccess.value = !isDialogBanSuccess.value;
+  };
 </script>
 
 <template>
@@ -47,7 +74,7 @@
       <div class="row justify-between items-center">
         <h2 class="top__title">{{ heading }}</h2>
         <Button
-          @click="$router.push('/new-user')"
+          @click="router.push('/users/new-user')"
           label="Добавить пользователя"
         />
       </div>
@@ -67,23 +94,8 @@
         :cachedData="usersList"
         :pagination="pagination!"
         :tableLoading="!loading"
-        @openDetail="
-          (el) => {
-            console.log(el, 'Редактировать');
-          }
-        "
-        @openDelete="
-          (el) => {
-            console.log(el, 'Удалить');
-            isDialogDelete = !isDialogDelete;
-          }
-        "
-        @openBan="
-          (el) => {
-            console.log(el, 'Заблокировать');
-            isDialogBan = !isDialogBan;
-          }
-        "
+        @openDelete="toggleDialogDelete"
+        @openBan="toggleDialogBan"
       />
     </div>
   </div>
@@ -91,18 +103,32 @@
   <teleport to="body">
     <Dialog
       v-if="isDialogDelete"
-      isDelete
-      title="Вы уверены, что хотите удалить пользователя?"
-      text="Это действие необратимо"
+      :user="currentUser"
+      isDeleteUser
       @onClose="isDialogDelete = false"
+      @onDelete="deleteUser"
+    />
+
+    <Dialog
+      v-if="isDialogDeleteSuccess"
+      isAccess
+      accessText="Пользователь удалён"
+      @onClose="isDialogDeleteSuccess = false"
     />
 
     <Dialog
       v-if="isDialogBan"
-      isAction
-      title="Блокировка пользователя"
-      text="Пользователь потеряет все данные на своем устройстве. Доступ в приложение будет невозможен. В случае необходимости, пользователя можно разблокировать через Административную панель"
+      :user="currentUser"
+      isBanUser
       @onClose="isDialogBan = false"
+      @onBan="banUser"
+    />
+
+    <Dialog
+      v-if="isDialogBanSuccess"
+      isAccess
+      accessText="Пользователь заблокирован"
+      @onClose="isDialogBanSuccess = false"
     />
   </teleport>
 </template>

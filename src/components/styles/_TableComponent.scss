@@ -1,4 +1,13 @@
 :deep() {
+
+  .q-table {
+    thead th {
+      font-size: 13px;
+      line-height: 16px;
+      font-weight: 600;
+    }
+  }
+
   .item {
     display: flex;
     align-items: center;
@@ -14,20 +23,20 @@
       border-bottom: 1px solid var(--grey-5);
     }
   }
+}
 
-  .blocked {
-    display: inline-block;
-    padding: 4px 6px;
-    border-radius: 4px;
+.blocked {
+  display: inline-block;
+  padding: 4px 6px;
+  border-radius: 4px;
 
-    &--true {
-      color: var(--red);
-      background-color: #ff3b300d;
-    }
+  &--true {
+    color: var(--red);
+    background-color: #ff3b300d;
+  }
 
-    &--false {
-      color: var(--grey);
-      background-color: var(--grey-6);
-    }
+  &--false {
+    color: var(--grey);
+    background-color: var(--grey-6);
   }
 }
