@@ -41,11 +41,9 @@
   const toggleDialogDelete = (user: User): void => {
     if (user) currentUser.value = user;
     isDialogDelete.value = !isDialogDelete.value;
-    console.log(user);
   };
   // Удаление пользователя
   const deleteUser = (user: User): void => {
-    console.log(user.firstname + " " + user.lastname, "delete");
     isDialogDelete.value = false;
     isDialogDeleteSuccess.value = !isDialogDeleteSuccess.value;
   };
@@ -54,11 +52,9 @@
   const toggleDialogBan = (user: User): void => {
     if (user) currentUser.value = user;
     isDialogBan.value = !isDialogBan.value;
-    console.log(user);
   };
   // Бан пользователя
   const banUser = (user: User): void => {
-    console.log(user.firstname + " " + user.lastname, "ban");
     isDialogBan.value = false;
     isDialogBanSuccess.value = !isDialogBanSuccess.value;
   };

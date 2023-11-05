@@ -117,18 +117,3 @@ export const userColumnsDevices: QTableProps["columns"] = [
     format: (val) => `${val}`,
   },
 ];
-
-export const userActions: {
-  icon: string;
-  label?: string;
-  emit: string;
-}[] = [
-  {
-    icon: "mode_edit",
-    emit: "onEdit",
-  },
-  {
-    icon: "block",
-    emit: "onBlock",
-  },
-];
