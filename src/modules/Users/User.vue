@@ -56,12 +56,10 @@
   const toggleDialogBanDevice = (device: Device): void => {
     if (device) currentDevice.value = device;
     isDialogBanDevice.value = !isDialogBanDevice.value;
-    console.log(device);
   };
   // Бан устройства
   const banDevice = (device: Device): void => {
     // Логика бана устройства ...
-    console.log(`${device.id} ${device.deviceName} ban device`);
     isDialogBanDevice.value = false;
     isDialogBanDeviceSuccess.value = !isDialogBanDeviceSuccess.value;
   };
@@ -70,12 +68,10 @@
   const toggleDialogUnlockDevice = (device: Device): void => {
     if (device) currentDevice.value = device;
     isDialogUnlockDevice.value = !isDialogUnlockDevice.value;
-    console.log(device);
   };
   // Разблокировка устройства
   const unlockDevice = (device: Device): void => {
     // Логика разблокировки устройства ...
-    console.log(`${device.id} ${device.deviceName} unlock device`);
     isDialogUnlockDevice.value = false;
     isDialogUnlockDeviceSuccess.value =
       !isDialogUnlockDeviceSuccess.value;
@@ -234,7 +230,7 @@
   </div>
 
   <teleport to="body">
-    <!-- _____Блокировка_____ -->
+    <!-- _____ Блокировка _____ -->
     <Dialog
       v-if="isDialogBanDevice"
       :device="currentDevice"
@@ -250,7 +246,7 @@
       @onClose="isDialogBanDeviceSuccess = false"
     />
 
-    <!-- _____Разблокировка_____ -->
+    <!-- _____ Разблокировка _____ -->
     <Dialog
       v-if="isDialogUnlockDevice"
       :device="currentDevice"
@@ -264,6 +260,13 @@
       isAccess
       accessText="Устройство разблокировано"
       @onClose="isDialogUnlockDeviceSuccess = false"
+    />
+
+    <!-- _____ Календарь _____ -->
+    <Dialog
+      v-if="isDialogCalendar"
+      isCalendar
+      @onClose="isDialogCalendar = false"
     />
   </teleport>
 </template>

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
   import { ref } from "vue";
   import { User, Device } from "@/models/UserModel";
-  // import { Device }
   import Button from "@/components/UI/Button.vue";
   import IconTrash from "@/assets/icons/IconTrash.vue";
   import IconClose from "@/assets/icons/IconClose.vue";
@@ -14,6 +13,7 @@
     isBanDevice?: boolean;
     isUnlockDevice?: boolean;
     isAction?: boolean;
+    isCalendar?: boolean;
     user?: User | null;
     device?: Device | null;
     isAccess?: boolean;
@@ -23,6 +23,8 @@
 
   // Флаг открытого окна
   const isOpened = ref<boolean>(true);
+
+  const modelDate = ref({ from: "", to: "" });
 </script>
 
 <template>
@@ -32,7 +34,10 @@
     @hide="$emit('onClose')"
   >
     <div class="dialog__wrapper">
-      <div class="dialog__header header">
+      <div
+        v-if="!isCalendar"
+        class="dialog__header header"
+      >
         <q-space />
         <q-btn
           class="header__close"
@@ -173,6 +178,33 @@
             outline
             @click="$emit('openUnlockDevice', device)"
           />
+        </div>
+      </template>
+
+      <template v-if="isCalendar">
+        <div class="date">
+          <q-date
+            v-model="modelDate"
+            minimal
+            range
+          />
+
+          <div class="date__footer">
+            <Button
+              label="Отмена"
+              height="32px"
+              color="transparent"
+              text-color="blue"
+              v-close-popup
+            />
+            <Button
+              label="Ок"
+              color="transparent"
+              text-color="blue"
+              height="32px"
+              v-close-popup
+            />
+          </div>
         </div>
       </template>
 

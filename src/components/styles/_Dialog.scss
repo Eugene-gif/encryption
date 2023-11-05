@@ -89,6 +89,21 @@
     }
   }
 
+  .date {
+    width: 100%;
+
+    .q-date {
+      width: 100%;
+      box-shadow: none;
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: end;
+      gap: 8px;
+      padding: 0 16px 16px;
+    }
+  }
 
   .footer {
     display: flex;
